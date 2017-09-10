@@ -1,0 +1,25 @@
+{
+  "name": "fortcode-onepage-start",
+  "description": "Fortcode one page template",
+  "version": "1.0.0",
+  "author": "Fortcode",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~3.2.1",
+    "modernizr": "~3.5.0",
+    "normalize.css": "~7.0.0",
+    "slick-carousel": "~1.7.1",
+    "magnific-popup": "~1.1.0"
+  }
+  // use if you need another main lib file
+  /*"overrides": {
+    "package-without-main": {
+      "main": "dist/package-without-main.js"
+    }
+  }*/
+}

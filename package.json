@@ -1,0 +1,13 @@
+{
+  "name": "Fortcode-onepage-start",
+  "version": "1.0.0",
+  "description": "Fortcode one page template",
+  "main": "index.js",
+  "author": "Fortcode",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "wiredep": "^4.0.0"
+  }
+}
