@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+<<<<<<< HEAD
   sass = require('gulp-pug'),
   browserSync = require('browser-sync'),
   concat = require('gulp-concat'),
@@ -11,6 +12,28 @@ var gulp = require('gulp'),
   cache = require('gulp-cache'),
   wiredep = require('wiredep'),
   autoprefixer = require('gulp-autoprefixer');
+=======
+    inject = require('gulp-inject'),
+    wiredep = require('wiredep').stream;
+ 
+gulp.task('inject', function () {
+  var target = gulp.src('app/_html/index.html');
+  var sources = gulp.src(['app/**/*.js', 'app/**/*.css'], {read: false});
+
+  return target.pipe(inject(sources))
+    .pipe(gulp.dest('app/_html'));
+
+  // gulp.src('app/_html/index.html')
+  // .pipe(inject(gulp.src(['app/_html/partials/head.html']), {
+  //   starttag: '<!-- inject:head:{{ext}} -->',
+  //   transform: function (filePath, file) {
+  //     // return file contents as string 
+  //     return file.contents.toString('utf8')
+  //   }
+  // }))
+  // .pipe(gulp.dest('app/_html'));
+});
+>>>>>>> 20546b2d4d1dddd708aec9723c8a3a6c059fe7ae
 
 gulp.task('bower', function () {
   gulp.src('app/index.html')
@@ -19,6 +42,7 @@ gulp.task('bower', function () {
       goes: 'here'
     }))
     .pipe(gulp.dest('app/'));
+<<<<<<< HEAD
 });
 
 
@@ -101,3 +125,6 @@ gulp.task('clear', function (callback) {
 })
 
 gulp.task('default', ['watch']);
+=======
+});
+>>>>>>> 20546b2d4d1dddd708aec9723c8a3a6c059fe7ae

@@ -6,6 +6,7 @@
   "author": "Fortcode",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
@@ -18,6 +19,10 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
     "imagemin-pngquant": "^5.0.1",
+=======
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+>>>>>>> 20546b2d4d1dddd708aec9723c8a3a6c059fe7ae
     "wiredep": "^4.0.0"
   }
 }
