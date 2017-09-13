@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-<<<<<<< HEAD
   sass = require('gulp-pug'),
   browserSync = require('browser-sync'),
   concat = require('gulp-concat'),
@@ -11,10 +10,9 @@ var gulp = require('gulp'),
   pngquant = require('imagemin-pngquant'),
   cache = require('gulp-cache'),
   wiredep = require('wiredep'),
-  autoprefixer = require('gulp-autoprefixer');
-=======
-    inject = require('gulp-inject'),
-    wiredep = require('wiredep').stream;
+  autoprefixer = require('gulp-autoprefixer'),
+  inject = require('gulp-inject'),
+  wiredep = require('wiredep').stream;
  
 gulp.task('inject', function () {
   var target = gulp.src('app/_html/index.html');
@@ -33,7 +31,7 @@ gulp.task('inject', function () {
   // }))
   // .pipe(gulp.dest('app/_html'));
 });
->>>>>>> 20546b2d4d1dddd708aec9723c8a3a6c059fe7ae
+
 
 gulp.task('bower', function () {
   gulp.src('app/index.html')
@@ -42,7 +40,6 @@ gulp.task('bower', function () {
       goes: 'here'
     }))
     .pipe(gulp.dest('app/'));
-<<<<<<< HEAD
 });
 
 
@@ -125,6 +122,3 @@ gulp.task('clear', function (callback) {
 })
 
 gulp.task('default', ['watch']);
-=======
-});
->>>>>>> 20546b2d4d1dddd708aec9723c8a3a6c059fe7ae
