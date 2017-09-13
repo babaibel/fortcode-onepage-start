@@ -1,0 +1,76 @@
+// ----------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------
+
+// Fonts
+$baseFont:  Arial, sans-serif
+$titleFont:  "Lato", sans-serif
+
+// Layout sizes
+$maxW: 1200px
+$minW: 320px
+$wr: 1000px
+
+// Colors
+$cBlack: #000
+$cWhite: #fff
+$cRed: #ff0000
+$cRedD: #b02e2e
+$cRedL: #cc4040
+
+
+// ----------------------------------------------------------------------
+// General styles
+// ----------------------------------------------------------------------
+
+*,
+*:after,
+*:before
+  box-sizing: border-box
+
+
+HTML,
+BODY
+  height: 100%
+  min-width: $minW
+
+BODY
+  font-family:  $baseFont
+  background: $cWhite
+  font-size: 16px
+  line-height: 1.4
+
+*:focus
+  outline: none
+
+INPUT,
+TEXTAREA,
+BUTTON
+  outline: none
+  border: 0
+  background-color: transparent
+  padding: 0
+  line-height: normal
+  -webkit-appearance: none
+  border-radius: 0
+
+TEXTAREA
+  resize: vertical
+
+IMG
+  max-width: 100%
+
+//::-webkit-scrollbar-track
+  background: transparent
+
+//::-webkit-scrollbar
+  width: 12px
+
+//::-webkit-scrollbar-thumb
+  background-color: $cRed
+  cursor: pointer
+
+// ----------------------------------------------------------------------
+// Project styles
+// ----------------------------------------------------------------------
+

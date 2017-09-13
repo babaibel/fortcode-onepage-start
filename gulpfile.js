@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-  sass = require('gulp-pug'),
+  sass = require('gulp-sass'),
   browserSync = require('browser-sync'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
@@ -9,10 +9,9 @@ var gulp = require('gulp'),
   imagemin = require('gulp-imagemin'),
   pngquant = require('imagemin-pngquant'),
   cache = require('gulp-cache'),
-  wiredep = require('wiredep'),
+  wiredep = require('wiredep').stream,
   autoprefixer = require('gulp-autoprefixer'),
-  inject = require('gulp-inject'),
-  wiredep = require('wiredep').stream;
+  inject = require('gulp-inject');
  
 gulp.task('inject', function () {
   var target = gulp.src('app/_html/index.html');
@@ -34,11 +33,8 @@ gulp.task('inject', function () {
 
 
 gulp.task('bower', function () {
-  gulp.src('app/index.html')
-    .pipe(wiredep({
-      optional: 'configuration',
-      goes: 'here'
-    }))
+  return gulp.src('app/index.html')
+    .pipe(wiredep())
     .pipe(gulp.dest('app/'));
 });
 
@@ -46,9 +42,9 @@ gulp.task('bower', function () {
 gulp.task('sass', function(){ // Создаем таск Sass
   return gulp.src('app/sass/**/*.sass') // Берем источник
     .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-sass
-    .pipe(autoprefixer({ cascade: true })) // Создаем префиксы
+    .pipe(autoprefixer({ cascade: false })) // Создаем префиксы
     .pipe(gulp.dest('app/css')) // Выгружаем результата в папку app/css
-    .pipe(browserSync.reload({stream: true})) // Обновляем CSS на странице при изменении
+    .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
 });
 
 gulp.task('browser-sync', function() { // Создаем таск browser-sync

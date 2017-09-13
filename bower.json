@@ -16,10 +16,4 @@
     "slick-carousel": "~1.7.1",
     "magnific-popup": "~1.1.0"
   }
-  // use if you need another main lib file
-  /*"overrides": {
-    "package-without-main": {
-      "main": "dist/package-without-main.js"
-    }
-  }*/
 }
