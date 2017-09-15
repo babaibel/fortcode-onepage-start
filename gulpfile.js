@@ -11,8 +11,39 @@ var gulp = require('gulp'),
   cache = require('gulp-cache'),
   wiredep = require('wiredep').stream,
   autoprefixer = require('gulp-autoprefixer'),
-  inject = require('gulp-inject');
- 
+  inject = require('gulp-inject'),
+	gutil = require('gulp-util'),
+	iconfont = require('gulp-iconfont'),
+	iconfontCss = require('gulp-iconfont-css'),
+	ttf2woff = require('gulp-ttf2woff'),
+	ttf2woff2 = require('gulp-ttf2woff2');
+
+gulp.task('iconfont', function(){
+	gutil.log('Creating svg-font');
+
+	var fontName = 'iconic';
+
+	return gulp.src(['app/fonts/svg/*.svg'])
+		.pipe(iconfontCss({
+			fontName: fontName,
+			// При использовании файла формата SASS у шрифта возникали некоторые проблемы отображения
+			path: 'app/styles/components/svg-fonts/iconfont-template.scss',
+			targetPath: '../styles/components/svg-fonts/_iconfont.scss',
+			fontPath: '../fonts/',
+			cssClass: 'iconic'
+		}))
+		.pipe(iconfont({
+			fontName: fontName,
+			formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+			prependUnicode: true,
+			normalize: true,
+			fontHeight: 1001,
+			centerHorizontally: true
+		})).pipe(
+			gulp.dest('app/fonts')
+		);
+});
+
 gulp.task('inject', function () {
   var target = gulp.src('app/_html/index.html');
   var sources = gulp.src(['app/**/*.js', 'app/**/*.css'], {read: false});
@@ -31,6 +62,52 @@ gulp.task('inject', function () {
   // .pipe(gulp.dest('app/_html'));
 });
 
+gulp.task('ttf2woff', function(){
+	gutil.log('Creating woff font');
+	return gulp.src(['app/fonts/text/*.ttf'])
+		.pipe(ttf2woff({
+			clone: true
+		}))
+		.pipe(gulp.dest('app/fonts/'));
+});
+
+gulp.task('textfont', ['ttf2woff'], function(){
+	gutil.log('Creating woff2 font');
+	return gulp.src(['app/fonts/text/*.ttf'])
+		.pipe(ttf2woff2())
+		.pipe(gulp.dest('app/fonts/'));
+});
+
+// gulp.task('textfont', ['ttf2woff', 'ttf2woff2'], function(){
+// 	gutil.log('Creating text-font');
+// });
+
+gulp.task('fontgen', function() {
+	return gulp.src("app/fonts/text/*.{ttf,otf}")
+		.pipe(fontgen({
+			dest: "app/fonts"
+		}));
+});
+
+gulp.task('fontfacegen', function() {
+	return gulp.src("app/fonts/text/*.{ttf,otf}")
+		.pipe(fontgen(result));
+});
+
+gulp.task('font', function() {
+	return src('app/fonts/text/*.{ttf,otf}', { read: false })
+		.pipe(gulpFont({
+			ext: '.css',
+			fontface: 'app/fonts',
+			relative: '/app/fonts',
+			dest: 'app/fonts',
+			embed: ['woff'],
+			collate: false
+		}))
+		.pipe(dest('app/fonts'));
+});
+
+
 
 gulp.task('bower', function () {
   return gulp.src('app/index.html')
@@ -40,8 +117,9 @@ gulp.task('bower', function () {
 
 
 gulp.task('sass', function(){ // Создаем таск Sass
-  return gulp.src('app/sass/**/*.sass') // Берем источник
-    .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-sass
+	gutil.log('Compile sass to css');
+  return gulp.src('app/styles/**/*.sass') // Берем источник
+    .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-styles
     .pipe(autoprefixer({ cascade: false })) // Создаем префиксы
     .pipe(gulp.dest('app/css')) // Выгружаем результата в папку app/css
     .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
@@ -74,7 +152,7 @@ gulp.task('css-libs', ['sass'], function() {
 });
 
 gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {
-  gulp.watch('app/sass/**/*.sass', ['sass']); // Наблюдение за sass файлами в папке sass
+  gulp.watch('app/styles/**/*.sass', ['sass']); // Наблюдение за styles файлами в папке styles
   gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
   gulp.watch('app/js/**/*.js', browserSync.reload);   // Наблюдение за JS файлами в папке js
 });
@@ -118,3 +196,15 @@ gulp.task('clear', function (callback) {
 })
 
 gulp.task('default', ['watch']);
+
+function log(msg) {
+	if (typeof(msg) === 'object') {
+		for (var item in msg) {
+			if (msg.hasOwnProperty(item)) {
+				$.util.log($.util.colors.blue(msg[item]));
+			}
+		}
+	} else {
+		$.util.log($.util.colors.blue(msg));
+	}
+}

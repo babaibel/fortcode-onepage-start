@@ -1,0 +1,231 @@
+@import svg-fonts/iconfont
+@import icons
+@import buttons
+@import links
+@import typography
+@import formElements
+@import formLayout
+@import popups
+
+// ----------------------------------------------------------------------
+// Small components
+// ----------------------------------------------------------------------
+.label
+	display: inline-block
+	width: 62px
+	height: 21px
+	line-height: 17px
+	border: 2px solid $cGrayD
+	color: $cGrayD
+	font-size: 13px
+	text-transform: uppercase
+	text-align: center
+	font-weight: bold
+	border-radius: 7px
+	font-family: $titleFont
+
+	.iconic
+		display: inline-block
+		vertical-align: middle
+		line-height: 13px
+		position: relative
+		margin-right: 3px
+		top: -1px
+
+	&--xl
+		height: 30px
+		width: 90px
+		font-size: 20px
+		line-height: 24px
+
+		.iconic
+			margin-right: 6px
+
+	&--red
+		color: $cRedD
+		border-color: $cRedD
+
+		.iconic
+			color: $cRedD
+
+	&--green
+		color: $cGreen
+		border-color: $cGreen
+
+		.iconic
+			color: $cGreen
+
+.label-verified
+	display: inline-block
+	font-size: 13px
+	color: #000
+	margin-bottom: 10px
+	.iconic
+		font-size: 25px
+		color: $cGreen
+		margin-right: 5px
+		display: inline-block
+		vertical-align: middle
+
+	&__text
+		display: inline-block
+		vertical-align: middle
+
+.sep
+	height: 1px
+	margin: 35px 0
+	background: #e9e9e9
+
+.stat-label
+	display: inline-block
+	font-size: 16px
+	font-family: $titleFont
+	line-height: 24px
+	
+	&__icon
+		color: $cGray
+		display: inline-block
+		vertical-align: middle
+		font-size: 20px
+		margin-right: 5px
+
+	&__number
+		font-weight: bold
+		color: $cGrayDText
+		display: inline-block
+		vertical-align: middle
+
+	&__text
+		color: $cGrayD
+		font-weight: 500
+		display: inline-block
+		vertical-align: middle
+
+.price-label
+	display: inline-block
+	font-size: 30px
+	font-weight: bold
+	height: 56px
+	border: 5px solid $cRed
+	border-radius: 7px
+	padding: 0 0 0 10px
+	margin-right: 25px
+	line-height: 46px
+	color: $cRed
+	font-family: $titleFont
+	position: relative
+
+	&__text
+		position: relative
+		z-index: 1
+
+	&:after
+		content: ""
+		position: absolute
+		right: -20px
+		top: 50%
+		margin-top: -20px
+		width: 40px
+		height: 40px
+		border-radius: 7px
+		background: $cRed
+		transform: rotate(45deg)
+
+	&:before
+		content: ""
+		position: absolute
+		right: -14px
+		top: 50%
+		margin-top: -18px
+		width: 36px
+		height: 36px
+		border-radius: 6px
+		background: #f9f9f9
+		transform: rotate(45deg)
+		z-index: 1
+
+._no-photo
+	background: url(../images/no-photo-img.png) no-repeat 50% 50% #f0f0f0!important
+
+.children
+	display: inline-block
+	margin-right: 25px
+	margin-top: 20px
+
+	&__text
+		display: inline-block
+		vertical-align: middle
+		font-size: 16px
+		font-family: $titleFont
+		color: $cGrayDText
+		font-weight: 300
+		border-bottom: 1px solid $cGray
+
+	&__del
+		display: inline-block
+		vertical-align: middle
+		border-radius: 4px
+		background-color: $cGrayDText
+		width: 20px
+		height: 20px
+		line-height: 20px
+		text-align: center
+		position: relative
+		top: 2px
+		cursor: pointer
+		margin-left: 3px
+
+		&.iconic
+			font-size: 10px
+			color: #fff
+			&:after
+				display: inline-block
+				transform: rotate(45deg)
+
+.main-filter-label
+	display: inline-block
+	margin-right: 25px
+	margin-bottom: 10px
+
+	&__text
+		display: inline-block
+		vertical-align: middle
+		font-size: 16px
+		font-family: $titleFont
+		color: $cGrayDText
+		font-weight: 300
+		border-bottom: 1px solid $cGray
+
+	&__del
+		display: inline-block
+		vertical-align: middle
+		border-radius: 4px
+		background-color: $cGrayDText
+		width: 20px
+		height: 20px
+		line-height: 20px
+		text-align: center
+		position: relative
+		top: 2px
+		cursor: pointer
+		margin-left: 3px
+
+		&.iconic
+			font-size: 10px
+			color: #fff
+			&:after
+				display: inline-block
+				transform: rotate(45deg)
+
+.text-green
+	color: $cGreen
+
+.text-red
+	color: $cRed
+
+.red-star
+	color: $cRed
+	font-size: 22px
+	top: 15px
+	position: absolute
+	right: 5px

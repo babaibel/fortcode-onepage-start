@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "iconic";
+    src: url('../fonts/iconic.eot');
+    src: url('../fonts/iconic.eot?#iefix') format('eot'),
+    url('../fonts/iconic.woff') format('woff'),
+    url('../fonts/iconic.ttf') format('truetype'),
+    url('../fonts/iconic.svg#iconic') format('svg');
+}
+
+@mixin iconic-styles {
+    font-family: "iconic";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+    text-decoration: none;
+    text-transform: none;
+    color: #000;
+}
+
+.iconic {
+    @include iconic-styles;
+}
+
+@function iconic-char($filename) {
+    $char: "";
+
+    @if $filename == cross {
+    $char: "\E001";
+}
+
+@return $char;
+}
+
+@mixin iconic($filename, $insert: after, $extend: true) {
+&:#{$insert} {
+
+    content: iconic-char($filename);
+}
+}
+
+.iconic--cross {
+    @include iconic(cross);
+}
